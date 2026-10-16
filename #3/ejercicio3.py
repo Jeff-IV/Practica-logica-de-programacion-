@@ -47,11 +47,14 @@ sorted(new_tuple)
 agenda = []
 
 def insercion(name: str, number: int) -> None:
+    """ Anade un contacto a la Agenda """
     agenda.append((name, number))
     print("contacto agregado.")
     
     
 def busqueda(name: str) -> int | bool:
+    """ Busca un contacto en la agenda por su nombre 
+    (si hay dos contactos con el mismo nombre retorna el primer contacto en la agenda)"""
     for element in agenda:
         if element[0] == name:
             return element[1]
@@ -60,6 +63,16 @@ def busqueda(name: str) -> int | bool:
 
 
 def actualizacion(old_name: str, new_name: str, new_number: int) -> bool:
+    """ Actualiza un contacto de la agenda
+    PARAMS: 
+    old_name = Nombre del contacto a actualizar
+    new_name = Nombre actualizado
+    new_number = telefono actualizado
+    
+    RETURNS:
+    True si se pudo actualizar
+    False si no se pudo actualizar
+    """
     for element in agenda:
         if element[0] == old_name:
             element = (new_name, new_number)
@@ -69,13 +82,16 @@ def actualizacion(old_name: str, new_name: str, new_number: int) -> bool:
 
 
 # Aqui va el de ordenamiento
-
+def ordeamiento() -> None:
+    """ Ordena la agenda segun numeros telefonicos """
+    agenda.sort(key=lambda x: x[1])
 
     
 # Aqui va el de borrado
-def borrado(name: str) -> bool:
+def borrado(tel: int) -> bool:
+    """ Elimina un contacto de la agenda segun el numero de telefono """
     for index, element in enumerate(agenda):
-        if element[0] == name:
+        if element[1] == tel:
             agenda.pop(index)
             return True
         
@@ -83,11 +99,31 @@ def borrado(name: str) -> bool:
 
 
 def verificar_numero(number: int) -> bool:
+    """ 
+    Verifica que un numero de telefono cumpla con los requisitos.
+    
+    Params:
+    number = Numero de telefono
+    
+    Returns:
+    True en caso que cumpla
+    False e.o.c
+    """
     if len(str(number)) != 10:
         print("Numero no valido.")
         return False
     
     return True
+
+
+def mostrar_contactos() -> None:
+    """ Muestra en consola el nombre y numero de todos los contactos en la Agenda """
+    for contacto in agenda:
+        print(f"Nombre: {contacto[0]} numero: {contacto[1]}")
+        
+        
+
+
 
 while True:
     print("################### AGENDA ####################")
@@ -96,10 +132,11 @@ while True:
           2. Update contact
           3. Delete contact
           4. Search contact
-          5. Salir
+          5. Sort contacts
+          6. Show contacts
+          7. Salir
           """)
     user_option = int(input())
-    
 
     
     match user_option:
@@ -122,7 +159,7 @@ while True:
                 break
             
         case 3:
-            name = input("nombre contacto a eliminar: ")
+            tel = int(input("numero del contacto a eliminar: "))
             if borrado(name):
                 print("Contacto borrado de manera exitosa")
             else:
@@ -135,8 +172,16 @@ while True:
                 print(f"El contacto {name} no existe")
             else:
                 print(f"Su numero es {number}")
-            
+                
         case 5:
+            ordeamiento()
+            print("La lista fue ordena con exito.")
+            
+        
+        case 6:
+            mostrar_contactos()
+            
+        case 7:
             print("Gracias por usar la agenda Jefito, cerrando...")
             break
         
