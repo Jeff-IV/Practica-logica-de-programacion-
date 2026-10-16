@@ -44,12 +44,12 @@ sorted(new_tuple)
 
 
 # Ejercicio extra
-
 agenda = []
 
 def insercion(name: str, number: int) -> None:
     agenda.append((name, number))
     print("contacto agregado.")
+    
     
 def busqueda(name: str) -> int | bool:
     for element in agenda:
@@ -57,6 +57,7 @@ def busqueda(name: str) -> int | bool:
             return element[1]
         
     return False
+
 
 def actualizacion(old_name: str, new_name: str, new_number: int) -> bool:
     for element in agenda:
@@ -66,10 +67,19 @@ def actualizacion(old_name: str, new_name: str, new_number: int) -> bool:
     
     return False
 
+
 # Aqui va el de ordenamiento
-    
+
+
     
 # Aqui va el de borrado
+def borrado(name: str) -> bool:
+    for index, element in enumerate(agenda):
+        if element[0] == name:
+            agenda.pop(index)
+            return True
+        
+    return False
 
 
 def verificar_numero(number: int) -> bool:
@@ -112,12 +122,19 @@ while True:
                 break
             
         case 3:
-            break
+            name = input("nombre contacto a eliminar: ")
+            if borrado(name):
+                print("Contacto borrado de manera exitosa")
+            else:
+                print("no se pudo borrar el contacto porque no existe")
         
         case 4:
             name = input("Nombre contacto a buscar: ")
             number = busqueda(name)
-            print(f"Su numero es {number}")
+            if number is False:
+                print(f"El contacto {name} no existe")
+            else:
+                print(f"Su numero es {number}")
             
         case 5:
             print("Gracias por usar la agenda Jefito, cerrando...")
