@@ -25,6 +25,8 @@ greater_than : bool = a > b
 greather_equal_than : bool = a >= b
 less_than: bool = a < b
 less_equal_than : bool = a <= b
+equal = a == b
+unequal = a != b
 
 
 # Operadores logicos
@@ -41,17 +43,21 @@ not_in = c not in d # a no pertenece a b
 
 
 # Operadores de identidad 
-is_ = a is b  # True si refieren el mismo objeto
-is_not = a is not b # True si se refieren a objetos distintos
+is_ = a is b  # True si refieren el mismo objeto en memoria
+is_not = a is not b # True si se refieren a objetos distintos en memoria
 
 
 # Operadores de bits 
 and_bits = a & b
 or_bit = a | b
 xor = a ^ b
-not_bit = ~a
+not_bit = ~a # cambia el valor de cada bit (pero recordar que cada tipo de dato carga diferentes cantidades de bits en memoria!!!)
 des_izq = a << b # Desplaza bits a la izquierda
 des_der = a >> b # Desplaza bits a la derecha
+
+
+# ESTRUCTURAS DE CONTROL
+
 
 # Condicional
 int_list : list[int] = [1, 2, 3, 4, 5]
