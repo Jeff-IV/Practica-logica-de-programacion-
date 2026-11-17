@@ -13,7 +13,7 @@ diff : int = a - b
 mul : int = a * b # El tipo del retorno depende de los tipos que se operen
 div : float = a / b # la division retorna un flotante siempre
 int_div : int = a // b # la division entera usa la funcion piso para aproximar (elimina la parte decimal basicamente). Aunque cuando uno de los dos es float devuelve un float sin decimales (.0)
-res = a % b
+res = a % b # residuo de la division entre los dos numeros
 
 # Exponenciacion y logaritmo
 exp : int = a ** b # El tipo del retorno depende de los tipos que se operen (aunque si el exponente es negativo siempre retorna un float)
