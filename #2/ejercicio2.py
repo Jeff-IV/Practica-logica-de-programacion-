@@ -61,11 +61,31 @@ b = 2
 function_without_return()
 print("La suma de a y b es: " + str(sum(a, b)))
 print(f"la raiz aproximada de f es: {bisection(f=f, a=a, b=b)}")
+
+
+# Funciones que reciben muchos argumentos
+
+def many_arg(*args): # args resulta ser un iterable con todos los valores que le pasen a la funcion
+    for arg in args:
+        print(arg)
         
+
+many_arg("hola", "flexible", "locura")        
+
+        
+def many_key_value_args(**args): #args resulta ser un diccionario con todas las clave-valor en la funcion
+        for key, value in args.items():
+            print(f"Key: {key}, Value: {value}" )
+            
+
+many_key_value_args(name="Jef", age=23, city="liberty", game="tetris")
+            
+            
         
 # Funciones ya creadas en el leguanje
 length = len(range(1,10)) # Funcion que retorna la longitud de un iterable/contenedor
 print("La longitud del iterable es: " + str(length))
+
 
 
 # Diferencias entre variable local y global
@@ -83,6 +103,7 @@ try:
     
 except:
     print("exacto. No puedes imprimirla por fuera")
+
 
 
 # Ejercicio extra
